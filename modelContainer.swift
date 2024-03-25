@@ -7,21 +7,20 @@
 
 import SwiftData
 import Foundation
+import UIKit
 
-
-@Model
 class Note: Identifiable{
-    @Attribute(.unique) var id = UUID()
+    var id = UUID()
     var name: String
     var date: Date
-    var color: String
+    var color: UIColor
     var font: String
-    var fontColor: String
+    var fontColor: UIColor
     var inFolderWith: [String] = []
     
     
     
-    init(id: UUID, name: String, date: Date, color: String, font: String, fontColor: String) {
+    init(id: UUID, name: String, date: Date, color: UIColor, font: String, fontColor: UIColor) {
         self.id = id
         self.name = name
         self.date = date

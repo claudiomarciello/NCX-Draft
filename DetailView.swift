@@ -7,23 +7,58 @@
 
 import UIKit
 
-class DetailView: UIViewController {
+class DetailView: UIViewController, UITextFieldDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var note: Note?
+    @IBOutlet weak var noteView: UIView!
+    
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var colorButton: UIButton!
+    @IBOutlet weak var fontButton: UIButton!
 
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var Save: UIBarButtonItem!
+    required init?(coder: NSCoder, note: Note?) {
+        self.note = note
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 
-    /*
-    // MARK: - Navigation
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textField.text = note?.name
+        textField.textColor = note?.fontColor
+        noteView.backgroundColor = note?.color
+        // Do any additional setup after loading the view.
+        textField.backgroundColor = note?.color
+        
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+    @IBOutlet weak var backButton: UINavigationItem!
+    
+    
+    
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
+        true
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare")
+        note?.name = textField.text!
+        guard segue.identifier == "backSegue" else { return }
+
+    }
+    override func didMove(toParent parent: UIViewController?) {
+        if !(parent?.isEqual(self.parent) ?? false) {
+            print("Parent view loaded")
+        }
+        super.didMove(toParent: parent)
+    }
+    
+   
 
 }
