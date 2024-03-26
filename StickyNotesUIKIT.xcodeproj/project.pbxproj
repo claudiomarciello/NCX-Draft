@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6036A1062BAF7F46005E6DB9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6036A1052BAF7F46005E6DB9 /* MainView.swift */; };
 		6036A1082BAF805F005E6DB9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6036A1072BAF805F005E6DB9 /* DetailView.swift */; };
+		607BBBA12BB2C5D800397D6B /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607BBBA02BB2C5D800397D6B /* ColorCell.swift */; };
 		6090695A2BAEF95D003EB57B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609069592BAEF95D003EB57B /* AppDelegate.swift */; };
 		6090695C2BAEF95D003EB57B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090695B2BAEF95D003EB57B /* SceneDelegate.swift */; };
 		609069632BAEF95E003EB57B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 609069622BAEF95E003EB57B /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		6036A1052BAF7F46005E6DB9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		6036A1072BAF805F005E6DB9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		607BBBA02BB2C5D800397D6B /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		609069562BAEF95D003EB57B /* StickyNotesUIKIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StickyNotesUIKIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609069592BAEF95D003EB57B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6090695B2BAEF95D003EB57B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				6036A1072BAF805F005E6DB9 /* DetailView.swift */,
 				6090698B2BAEF971003EB57B /* CollectionViewCell.swift */,
+				607BBBA02BB2C5D800397D6B /* ColorCell.swift */,
 				6090698E2BAEF972003EB57B /* Main.storyboard */,
 				609069892BAEF971003EB57B /* modelContainer.swift */,
 				6036A1052BAF7F46005E6DB9 /* MainView.swift */,
@@ -244,6 +247,7 @@
 			files = (
 				6090695A2BAEF95D003EB57B /* AppDelegate.swift in Sources */,
 				6036A1082BAF805F005E6DB9 /* DetailView.swift in Sources */,
+				607BBBA12BB2C5D800397D6B /* ColorCell.swift in Sources */,
 				609069922BAEF972003EB57B /* CollectionViewCell.swift in Sources */,
 				6090695C2BAEF95D003EB57B /* SceneDelegate.swift in Sources */,
 				6036A1062BAF7F46005E6DB9 /* MainView.swift in Sources */,

@@ -112,7 +112,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     @objc func imageTapped() {
-        stickyNotes.append(Note(id: UUID(), name: "New Note", date: Date(), color: UIColor(.yellow), font: "regular", fontColor: UIColor(.white)))
+        stickyNotes.append(Note(id: UUID(), name: "New Note", date: Date(), color: "yellow", font: "regular", fontColor: UIColor(.white), fontSize: 18))
         print(stickyNotes.count)
         collectionView.reloadData()
         
@@ -282,7 +282,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         stickyNotes[selectedIndexPath.row] = note
                         print(stickyNotes[selectedIndexPath.row].name)
                         collectionView.reloadItems(at: [selectedIndexPath])
+                        collectionView.reloadData()
+
                         print("Note updated and collection view reloaded")
+
                     } else {
                         print("No selected index path")
                     }
