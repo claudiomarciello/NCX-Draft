@@ -37,7 +37,7 @@ As of March 2024, I had clearer clues about overall iOS development, and I decid
 ## Navigation
 The first topic I had to struggle with in managing UIKit was navigating from the MainView to the DetailView of the Notes. 
 
-
+![](screenshot.png)
 
 ## Data Persistency
 
