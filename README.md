@@ -73,5 +73,8 @@ Usage: In UIKit, you create and configure a UIPanGestureRecognizer instance and 
 After all of that, I discovered for my specific needs the existence of UICollectionViewDragDelegate, and its complementary part UICollectionViewDropDelegate.
 Defining a View Controller as Delegate, it provides you a set of methods to manage the result of Drag&Drop operations specifically on Collection View cells.
 
+![](screenshot.png)
+
+
 ![](collectionDrop.png)
 
