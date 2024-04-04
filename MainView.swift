@@ -31,17 +31,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             destinationIndexPath = IndexPath(row: row, section: section)
         }
         
-        // Check if the drop is from the same collection view
         if coordinator.session.localDragSession != nil {
-            // Get the original index path of the item being dragged
             guard let sourceIndexPath = coordinator.items.first?.sourceIndexPath else { return }
             
-            // Update your data source to reflect the swap
-           /* let movedNote = stickyNotes.remove(at: sourceIndexPath.item)
-            stickyNotes.insert(movedNote, at: destinationIndexPath.item)*/
-            
-            
-            // Perform the interactive move in the collection view
+
             collectionView.performBatchUpdates {
                 collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
             } completion: { _ in
@@ -89,11 +82,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Add the tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCellTap(_:)))
         cell?.addGestureRecognizer(tapGesture)
-        
-        let tapGestureSegue = UITapGestureRecognizer(target: self, action: #selector(segue))
-        
-        //  cell?.addGestureRecognizer(tapGestureSegue)
         print(cell!.note!.color)
+        cell!.layer.cornerRadius = 8
+        cell!.layer.masksToBounds = true
         
         
         return cell!
@@ -112,7 +103,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     @objc func imageTapped() {
-        stickyNotes.append(Note(id: UUID(), name: "New Note", date: Date(), color: "yellow", font: "regular", fontColor: UIColor(.white), fontSize: 18))
+        stickyNotes.append(Note(id: UUID(), name: "New Note", date: Date(), color: "yellow", font: "regular", fontColor: UIColor(.black), fontSize: 18))
         print(stickyNotes.count)
         collectionView.reloadData()
         
@@ -142,29 +133,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.isUserInteractionEnabled = true
         collectionView.allowsSelection = true
-        
         Button.isUserInteractionEnabled = true // Enable user interaction
         
-        // Add tap gesture recognizer
         let tapGesturePlus = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        
-        
         Button.addGestureRecognizer(tapGesturePlus)
-        
         let dropInteraction = UIDropInteraction(delegate: self)
         Button.addInteraction(dropInteraction)
         
-        
-        // Enable reordering of cells
+
         collectionView.dragInteractionEnabled = true
         collectionView.dragDelegate = self
         collectionView.dropDelegate = self
-        
-        // Do any additional setup after loading the view.
+
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+
     }
     
     @objc func handleCellTap(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -261,6 +248,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 // Pass the selected note to the destination view controller
                 destination.note = selectedNote
                 print("passed note \(selectedNote.name)")
+                print(selectedNote.color)
             }
             
             

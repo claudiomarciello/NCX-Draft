@@ -5,6 +5,83 @@
 //
 
 import UIKit
+enum IndexToColor{
+    case yellow
+    case green
+    case pink
+    case orange
+    case greener
+    case magenta
+    case peach
+    case teal
+    case purple
+    case red
+    case lightblue
+    case white
+    
+    init?(intValue: Int) {
+        switch intValue {
+        case 0:
+            self = .yellow
+        case 1:
+            self = .green
+        case 2:
+            self = .pink
+        case 3:
+            self = .orange
+        case 4:
+            self = .greener
+        case 5:
+            self = .magenta
+        case 6:
+            self = .peach
+        case 7:
+            self = .teal
+        case 8:
+            self = .purple
+        case 9:
+            self = .red
+        case 10:
+            self = .lightblue
+        case 11:
+            self = .white
+        default:
+            return nil
+        }
+    }
+    
+    var stringValue: String {
+        switch self {
+        case .green:
+            return "green"
+        case .yellow:
+            return "yellow"
+        case .pink:
+            return "pink"
+        case .orange:
+            return "orange"
+        case .greener:
+            return "greener"
+        case .magenta:
+            return "magenta"
+        case .peach:
+            return "peach"
+        case .teal:
+            return "teal"
+        case .purple:
+            return "purple"
+        case .red:
+            return "red"
+        case .lightblue:
+            return "lightblue"
+        case .white:
+            return "white"
+            
+        }
+    }
+
+
+}
 
 class DetailView: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -22,11 +99,8 @@ class DetailView: UIViewController, UITextFieldDelegate, UICollectionViewDelegat
         print("Selected cell at indexPath: \(indexPath)")
         newColor = cell.color
         
-        print("old: \(noteView.backgroundColor)")
-        print(newColor)
-        noteView.backgroundColor = UIColor(named: newColor!)
-        print("new: \(noteView.backgroundColor)")
 
+        textView.backgroundColor = UIColor(named: IndexToColor(intValue: indexPath.row)!.stringValue)
 
         view.setNeedsDisplay()
         view.layoutIfNeeded()
@@ -44,8 +118,10 @@ class DetailView: UIViewController, UITextFieldDelegate, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ColorCell
-        
-        cell.color = "green"
+        cell.color = IndexToColor(intValue: indexPath.row)?.stringValue
+        print(indexPath.row)
+        cell.contentView.backgroundColor = UIColor(named: IndexToColor(intValue: indexPath.row)!.stringValue)
+
 
         
         // Add the tap gesture recognizer
@@ -60,6 +136,7 @@ class DetailView: UIViewController, UITextFieldDelegate, UICollectionViewDelegat
 
     var note: Note?
     
+    @IBOutlet weak var buttonsView: UIVisualEffectView!
     @IBOutlet weak var overlayView: UIVisualEffectView!
     
     @IBOutlet weak var colorView: UIView!
@@ -90,10 +167,10 @@ class DetailView: UIViewController, UITextFieldDelegate, UICollectionViewDelegat
         
         
 
-        noteView.backgroundColor = UIColor(named: note!.color)
+        
         // Do any additional setup after loading the view.
-        noteView.layer.cornerRadius = 12
-        noteView.layer.masksToBounds = true
+        textView.layer.cornerRadius = 12
+        textView.layer.masksToBounds = true
 
         collectionView.delegate = self
            collectionView.dataSource = self
@@ -116,7 +193,7 @@ class DetailView: UIViewController, UITextFieldDelegate, UICollectionViewDelegat
             newSize = 32}
         // Update textView font size
         textView.font = UIFont.systemFont(ofSize: CGFloat(newSize!))
-          
+        
           // Refresh textView display
           textView.setNeedsDisplay()
 
