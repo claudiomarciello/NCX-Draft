@@ -42,18 +42,16 @@ Connecting elements in the interface, you can define the navigation flow of the 
 ![](segue.png)
 
 
-## Data Persistency
-
 ## Drag and Drop
 This was the hardest part of the journey. The reason why everything started, and the most difficult obstacle to overcome. 
 There are different ways to manage Drag&Drop features in both UIKit and SwiftUI.
 
-DragGesture:
+### DragGesture:
 
 DragGesture is used to detect dragging gestures in SwiftUI views. It allows you to track the movement of the user's finger and perform actions based on that movement.
 You can attach a DragGesture to any SwiftUI view using the .gesture modifier. It provides callbacks for handling the start, changes, and end of the drag gesture.
 
-.draggable:
+### .draggable:
 
 .draggable is a modifier in SwiftUI used to make views draggable by adding a drag gesture to them.
 Usage: You apply the .draggable modifier to a SwiftUI view to enable dragging behavior. This modifier internally uses DragGesture to track the drag gesture and update the position of the view accordingly.
@@ -62,14 +60,14 @@ Usage: You apply the .draggable modifier to a SwiftUI view to enable dragging be
 
 
 
-### 2. Transitioning to UIKit
+## 2. Transitioning to UIKit
 
-UIPanGestureRecognizer:
+### UIPanGestureRecognizer:
 
-Part of UIKit.
 UIPanGestureRecognizer is a gesture recognizer provided by UIKit for detecting and tracking the movement of a touch.
 Usage: In UIKit, you create and configure a UIPanGestureRecognizer instance and attach it to a view using the addGestureRecognizer(_:) method. You then implement delegate methods or add target-action methods to respond to the pan gesture.
 
+### Final solution: UICollectionViewDragDelegate
 After all of that, I discovered for my specific needs the existence of UICollectionViewDragDelegate, and its complementary part UICollectionViewDropDelegate.
 Defining a View Controller as Delegate, it provides you a set of methods to manage the result of Drag&Drop operations specifically on Collection View cells.
 
